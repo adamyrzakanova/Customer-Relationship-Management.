@@ -22,3 +22,26 @@ class Customer {
   customer1.addPurchase(150);
   console.log(`💰 ${customer1.name}'s total spent: $${customer1.getTotalSpent()}`);
   
+  // Task 2: SalesRep Class
+class SalesRep {
+    constructor(name) {
+      this.name = name;
+      this.clients = [];
+    }
+  
+    addClient(customer) {
+      this.clients.push(customer);
+    }
+  
+    getClientTotal(name) {
+      const client = this.clients.find((c) => c.name === name);
+      return client ? client.getTotalSpent() : 0;
+    }
+  }
+  
+  // Example usage
+  const rep = new SalesRep("John");
+  rep.addClient(customer1);
+  console.log(`📋 ${rep.name}'s client list:`, rep.clients.map(c => c.name));
+  console.log(`🔍 ${customer1.name}'s total (via ${rep.name}): $${rep.getClientTotal("Alice")}`);
+  
