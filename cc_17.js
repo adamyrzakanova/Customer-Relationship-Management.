@@ -4,7 +4,7 @@ class Customer {
       this.name = name;
       this.email = email;
       this.purchaseHistory = [];
-      console.log(`🧾 New customer created: ${this.name}`);
+      console.log(` New customer created: ${this.name}`);
     }
   
     addPurchase(amount) {
@@ -20,7 +20,7 @@ class Customer {
   const customer1 = new Customer("Alice", "alice@example.com");
   customer1.addPurchase(200);
   customer1.addPurchase(150);
-  console.log(`💰 ${customer1.name}'s total spent: $${customer1.getTotalSpent()}`);
+  console.log(` ${customer1.name}'s total spent: $${customer1.getTotalSpent()}`);
   
   // Task 2: SalesRep Class
 class SalesRep {
@@ -42,6 +42,26 @@ class SalesRep {
   // Example usage
   const rep = new SalesRep("John");
   rep.addClient(customer1);
-  console.log(`📋 ${rep.name}'s client list:`, rep.clients.map(c => c.name));
-  console.log(`🔍 ${customer1.name}'s total (via ${rep.name}): $${rep.getClientTotal("Alice")}`);
+  console.log(` ${rep.name}'s client list:`, rep.clients.map(c => c.name));
+  console.log(` ${customer1.name}'s total (via ${rep.name}): $${rep.getClientTotal("Alice")}`);
+  
+// Task 3: VIPCustomer Class
+class VIPCustomer extends Customer {
+    constructor(name, email, vipLevel) {
+      super(name, email);
+      this.vipLevel = vipLevel;
+    }
+  
+    getTotalSpent() {
+      const baseTotal = super.getTotalSpent();
+      const bonus = baseTotal * 0.1; // 10% bonus
+      return baseTotal + bonus;
+    }
+  }
+  
+  // Example usage
+  const vip = new VIPCustomer("Bob", "bob@example.com", "Platinum");
+  vip.addPurchase(600);
+  vip.addPurchase(100);
+  console.log(`VIP ${vip.name} (${vip.vipLevel}) total with bonus: $${vip.getTotalSpent()}`);
   
