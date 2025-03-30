@@ -87,7 +87,7 @@ const customerSummary = allClients.map(c => ({
   total: c.getTotalSpent()
 }));
 
-// 🔍 Logging the report
+//  Logging the report
 console.log("Total Revenue: $" + totalRevenue);
 console.log(" High Spending Customers:", highSpenders.map(c => c.name));
 console.log("Customer Summary:", customerSummary);
